@@ -1,0 +1,6 @@
+#File Documenting the Backend Deve Process
+1.Identify the project backend requirements
+2. Design the architecture
+3. Connect with the DB designer to get the DB schema
+4. Set Up the Backend Framework/Architecture
+5. Design the product including Api, connect to database, integrate the frontend design
