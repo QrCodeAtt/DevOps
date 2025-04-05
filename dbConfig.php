@@ -32,7 +32,7 @@ function dbConnect(){
 		return $conn;
 }
 function createEnrolmentTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS enrolment (id int(9), stid varchar(7) NOT NULL PRIMARY KEY,
 	        email varchar(256), name varchar(256), course varchar(100), programme varchar (10));";
@@ -42,7 +42,7 @@ function createEnrolmentTable(){
 }
 
 function createStaffTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS staff (id int(9), stfid varchar(7) NOT NULL PRIMARY KEY,
 	        email varchar(256), name varchar(256), qualification varchar(100), specialisation varchar (10), 
@@ -52,7 +52,7 @@ function createStaffTable(){
 	return $msg;
 }
 function createModuleTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS Module (id int, 
 	        cosCode varchar (5), cosTitle varchar (100), level varchar(5), lecturer varchar(100),
@@ -66,7 +66,7 @@ function createModuleTable(){
 }
 
 function createTimeTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS timetable (id int auto_increment primary key,  cosCode varchar(5), 
 	        openAt TIME NOT NULL, closeAt TIME NOT NULL, graceAt TIME NOT NULL, stfid varchar(5), 
@@ -79,7 +79,7 @@ function createTimeTable(){
 }
 
 function createMappingTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS mapping (id int auto_increment primary key,  cosCode varchar(5), 
 	        stid varchar(7), cosTitle varchar(100), stfid varchar(5), 
@@ -93,7 +93,7 @@ function createMappingTable(){
 }
 
 function createAttendanceTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS attendance (id int auto_increment primary key, stid varchar(7),  
 	        cosCode varchar(5),  takenAt TIME, type varchar(100), 
@@ -106,6 +106,4 @@ function createAttendanceTable(){
 }
 }
 $Setup = new dbSetup();
-
-
 ?>
