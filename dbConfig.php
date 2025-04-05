@@ -12,12 +12,12 @@ class dbSetup{
     private $dbname   = "assignment";
 
 function __construct(){
-	$this->dbConnect();
-	$this->createEnrolmentTable();
-	$this->createStaffTable();
-	$this->createModuleTable();
-	$this->createTimeTable();
-	$this->createMappingTable();
+        @$this->dbConnect();
+	@$this->createEnrolmentTable();
+	@$this->createStaffTable();
+	@$this->createModuleTable();
+	@$this->createTimeTable();
+	@$this->createMappingTable();
 }
 
 function dbConnect(){
