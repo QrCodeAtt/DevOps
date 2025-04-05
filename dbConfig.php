@@ -60,7 +60,7 @@ function createModuleTable(){
 	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS Module (id int, 
-	        cosCode varchar (5), cosTitle varchar (100), level varchar(5), lecturer varchar(100),
+	        cosCode varchar (7), cosTitle varchar (100), level varchar(5), lecturer varchar(100),
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP, stfid varchar(5),
 			PRIMARY KEY (id, cosCode),
 			FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE
@@ -73,7 +73,7 @@ function createModuleTable(){
 function createTimeTable(){
 	$msg = 100;
 	$con = $this->dbConnect();
-	$sql = "CREATE TABLE IF NOT EXISTS timetable (id int auto_increment primary key,  cosCode varchar(5), 
+	$sql = "CREATE TABLE IF NOT EXISTS timetable (id int auto_increment primary key,  cosCode varchar(7), 
 	        openAt TIME NOT NULL, closeAt TIME NOT NULL, graceAt TIME NOT NULL, stfid varchar(5), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE
@@ -86,7 +86,7 @@ function createTimeTable(){
 function createMappingTable(){
 	$msg = 100;
 	$con = $this->dbConnect();
-	$sql = "CREATE TABLE IF NOT EXISTS mapping (id int auto_increment primary key,  cosCode varchar(5), 
+	$sql = "CREATE TABLE IF NOT EXISTS mapping (id int auto_increment primary key,  cosCode varchar(7), 
 	        stid varchar(7), cosTitle varchar(100), stfid varchar(5), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE,
@@ -101,7 +101,7 @@ function createAttendanceTable(){
 	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS attendance (id int auto_increment primary key, stid varchar(7),  
-	        cosCode varchar(5),  takenAt TIME, type varchar(100), 
+	        cosCode varchar(7),  takenAt TIME, type varchar(100), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stid) REFERENCES enrolment(stid) ON DELETE CASCADE
 			);";
