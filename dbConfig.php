@@ -1,5 +1,5 @@
 <?php
-if(!defined('isAccessible') || !defined('isActive')) { 
+if(!defined('isAccessible') || !defined('isActive') || constant("isActive") !== '1' || constant("isAccessible") !== 'enabled' ) { 
 die("
   <center> <h1> Oops! Seems you missed your way</h1> </center>
 "); 
