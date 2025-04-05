@@ -5,7 +5,7 @@ class dbSetup{
     private $username = "root";
     private $password = "";
     private $dbname   = "assignment";
-	
+
 function __construct(){
 	$this->dbConnect();
 	$this->createEnrolmentTable();
@@ -13,7 +13,6 @@ function __construct(){
 	$this->createModuleTable();
 	$this->createTimeTable();
 	$this->createMappingTable();
-	echo ":)";
 }
 
 function dbConnect(){
@@ -28,7 +27,7 @@ function dbConnect(){
 			} else {
 				$conn = $conn;
 			}	
-			$msg = $conn->connect_error;
+			//$msg = $conn->connect_error;
 		}else { $conn = $conn; }
 		return $conn;
 }
