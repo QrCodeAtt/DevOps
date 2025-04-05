@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group J4 DevOps Project on Student Attendance System</title>
+    <style>
+        
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #140834;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /*background-image: linear-gradient(to right, #6a11cb, #2575fc);*/
+
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+            position: absolute;
+            right: 50px; 
+            /* Position the form on the right side */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-container label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #6a11cb;
+        }
+
+        .login-container p {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .login-container p a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+        img {
+  padding: 5px;
+  width: 370px;
+  margin-left: -700px;
+  padding-left: -5px;
+  margin-top: 50px;
+}
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    color:  whitesmoke; 
+    font-size: 30px;
+    margin-top: -520px;
+    margin-left: -150px;
+}
+.search-container {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            max-width: 500px; /* Set the max width for the search bar */
+            padding: 5px;
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -500px;
+            width: 200px;
+
+        }
+
+        .search-container input {
+            width: 100%; /* Take 80% of the container width */
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            font-size: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
+        }
+
+        .search-container button {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-left: 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width:70px;
+        }
+
+        .search-container button:hover {
+            background-color: #6a11cb;
+        }
+
+        /* Responsive Styling for smaller screens */
+        @media (max-width: 768px) {
+            .search-container {
+                width: 90%;
+            }
+
+            .search-container input {
+                font-size: 14px;
+            }
+
+            .search-container button {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Further responsive adjustments for very small screens */
+        @media (max-width: 480px) {
+            .search-container input {
+                width: 70%; /* Slightly smaller input width on very small screens */
+            }
+
+            .search-container button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js">
+            function performSearch() {
+            let searchTerm = document.getElementById("search-input").value;
+            if (searchTerm) {
+                alert("Searching for: " + searchTerm);
+            } else {
+                alert("Please enter a search term.");
+            }
+        }
+    </script>
+</head>
+<body>
+        <h1>Welcome to UoB Student Attendance System</h1>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="takeattendance.html" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="enrolmodule.html">Sign up</a></p>
+    </div>
+        <p>
+            <a href="markattendance.html" action="markattendance.html">
+            <img src="qrcode.jpeg" alt="my-qr-code">
+            </a>
+        </p>
+        <div class="search-container">
+            <input type="text" placeholder="Search student" id="search-input">
+            <button type="button" onclick="performSearch()">Search</button>
+        </div>
+</body>
+</html>
