@@ -1,4 +1,9 @@
 <?php
+if(!defined('isAccessible') || !defined('isActive')) { 
+die("
+  <center> <h1> Oops! Seems you missed your way</h1> </center>
+"); 
+}
 class dbSetup{
 	
     private $servername = "localhost";
