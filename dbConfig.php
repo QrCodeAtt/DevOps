@@ -37,7 +37,7 @@ function createEnrolmentTable(){
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS enrolment (id int(9), stid varchar(7) NOT NULL PRIMARY KEY,
 	        email varchar(256), name varchar(256), course varchar(100), programme varchar (20), session varchar(10) NOT NULL,
-	        gender char (1),
+	        gender char (1), password varchar(256),
 	        regDate timestamp DEFAULT CURRENT_TIMESTAMP);";
 	$q = $con->query($sql);
 	if($q !== true){ $msg = 0; }else { $msg = 1;}
@@ -48,7 +48,7 @@ function createStaffTable(){
 	$msg = 0;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS staff (id int, stfid varchar(7) NOT NULL PRIMARY KEY,
-	                 email varchar(256), name varchar(256), qualification varchar(100), 
+	                 email varchar(256), name varchar(256), qualification varchar(100), password varchar(256), 
 		         specialisation varchar (10), department varchar (256), rank varchar (50), 
 	                 gender char (1), regDate timestamp DEFAULT CURRENT_TIMESTAMP);";
 	$q = $con->query($sql);
