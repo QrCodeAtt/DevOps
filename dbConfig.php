@@ -1,19 +1,23 @@
 <?php
+if(!defined('isAccessible') || !defined('isActive') || constant("isActive") !== '1' || constant("isAccessible") !== 'enabled' ) { 
+die("
+  <center> <h1> Oops! Seems you missed your way</h1> </center>
+"); 
+}
 class dbSetup{
 	
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
     private $dbname   = "assignment";
-	
+
 function __construct(){
-	$this->dbConnect();
-	$this->createEnrolmentTable();
-	$this->createStaffTable();
-	$this->createModuleTable();
-	$this->createTimeTable();
-	$this->createMappingTable();
-	echo ":)";
+        @$this->dbConnect();
+	@$this->createEnrolmentTable();
+	@$this->createStaffTable();
+	@$this->createModuleTable();
+	@$this->createTimeTable();
+	@$this->createMappingTable();
 }
 
 function dbConnect(){
@@ -28,12 +32,12 @@ function dbConnect(){
 			} else {
 				$conn = $conn;
 			}	
-			$msg = $conn->connect_error;
+			//$msg = $conn->connect_error;
 		}else { $conn = $conn; }
 		return $conn;
 }
 function createEnrolmentTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS enrolment (id int(9), stid varchar(7) NOT NULL PRIMARY KEY,
 	        email varchar(256), name varchar(256), course varchar(100), programme varchar (20), session varchar(10) NOT NULL,
@@ -45,7 +49,7 @@ function createEnrolmentTable(){
 }
 
 function createStaffTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS staff (id int, stfid varchar(7) NOT NULL PRIMARY KEY,
 	                 email varchar(256), name varchar(256), qualification varchar(100), password varchar(256), 
@@ -56,10 +60,10 @@ function createStaffTable(){
 	return $msg;
 }
 function createModuleTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS Module (id int, 
-	        cosCode varchar (5), cosTitle varchar (100), level varchar(5), lecturer varchar(100),
+	        cosCode varchar (7), cosTitle varchar (100), level varchar(5), lecturer varchar(100),
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP, stfid varchar(5),
 			PRIMARY KEY (id, cosCode),
 			FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE
@@ -70,9 +74,9 @@ function createModuleTable(){
 }
 
 function createTimeTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
-	$sql = "CREATE TABLE IF NOT EXISTS timetable (id int auto_increment primary key,  cosCode varchar(5), 
+	$sql = "CREATE TABLE IF NOT EXISTS timetable (id int auto_increment primary key,  cosCode varchar(7), 
 	        openAt TIME NOT NULL, closeAt TIME NOT NULL, graceAt TIME NOT NULL, stfid varchar(5), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE
@@ -83,9 +87,9 @@ function createTimeTable(){
 }
 
 function createMappingTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
-	$sql = "CREATE TABLE IF NOT EXISTS mapping (id int auto_increment primary key,  cosCode varchar(5), 
+	$sql = "CREATE TABLE IF NOT EXISTS mapping (id int auto_increment primary key,  cosCode varchar(7), 
 	        stid varchar(7), cosTitle varchar(100), stfid varchar(5), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stfid) REFERENCES staff(stfid) ON DELETE CASCADE,
@@ -97,10 +101,10 @@ function createMappingTable(){
 }
 
 function createAttendanceTable(){
-	$msg = 0;
+	$msg = 100;
 	$con = $this->dbConnect();
 	$sql = "CREATE TABLE IF NOT EXISTS attendance (id int auto_increment primary key, stid varchar(7),  
-	        cosCode varchar(5),  takenAt TIME, type varchar(100), 
+	        cosCode varchar(7),  takenAt TIME, type varchar(100), 
 			regDate timestamp DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (stid) REFERENCES enrolment(stid) ON DELETE CASCADE
 			);";
@@ -110,6 +114,4 @@ function createAttendanceTable(){
 }
 }
 $Setup = new dbSetup();
-
-
 ?>
